@@ -1,0 +1,107 @@
+// Exercício 01 — Distância entre dois pontos
+// ------------------------------------------------
+// Console.Write("Digite o primeiro x:");
+// double x1 = double.Parse(Console.ReadLine());
+// Console.Write("Digite o segundo x:");
+// double x2 = double.Parse(Console.ReadLine());
+// Console.Write("Digite o primeiro y:");
+// double y1 = double.Parse(Console.ReadLine());
+// Console.Write("Digite o segundo y:");
+// double y2 = double.Parse(Console.ReadLine());
+// double distancia = Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
+// Console.WriteLine($"A distância entre os pontos é: {distancia:F2}");
+// ===============================================
+// Exercício 02 — Calcular expressão com A, B e C
+// ------------------------------------------------
+// Console.Write("Digite o valor de a: ");
+// int a = int.Parse(Console.ReadLine());
+// Console.Write("Digite o valor de b: ");
+// int b = int.Parse(Console.ReadLine());
+// Console.Write("Digite o valor de c: ");
+// int c = int.Parse(Console.ReadLine());
+// int r = (a+b);
+// double raizR = Math.Sqrt(r);
+// int s = (b+c);
+// double raizS = Math.Sqrt(s);
+// double resultado = (raizR + raizS) / 2;
+// Console.WriteLine($"O resultado da expressão é: {resultado:F2}");
+// ===============================================
+// Exercício 03 — Peso Ideal
+// ------------------------------------------------
+// Console.Write("Digite sua altura: ");
+// double h = double.Parse(Console.ReadLine());
+
+// Console.Write("Digite seu sexo (M/F): ");
+// char sexo = char.Parse(Console.ReadLine().ToUpper());
+
+// double pesoIdeal = 0;
+
+// if (sexo == 'M')
+//             pesoIdeal = (72.7 * h) - 58;
+// else if (sexo == 'F')
+//       pesoIdeal = (62.1 * h) - 44.7;
+// else
+// {
+// Console.WriteLine("Sexo inválido.");
+// return;
+// }
+
+// Console.WriteLine($"Peso ideal: {pesoIdeal:f2} kg");
+// ===============================================
+// Exercício 04 — Cálculo da série PA
+// ------------------------------------------------
+// float S = 0;
+// int numerador = 1;
+// int denominador = 1;
+
+// while (numerador <= 99 && denominador <= 50)
+// {
+//    S = S + (float)numerador/denominador;
+//       numerador = numerador + 2;
+//       denominador = denominador + 1;
+// }
+// Console.Write($"Este e o resultado da PA: {S:F2}");
+// ===============================================
+// Exercício 05 — Salário com horas extras
+// ------------------------------------------------
+// Console.Write("Horas trabalhas no mês: ");
+// double horas = double.Parse(Console.ReadLine());
+// Console.Write("Salario por hora: ");
+// double valorHora = double.Parse(Console.ReadLine());
+// double horasSemanais = horas / 4;
+//       double salario;
+
+//       if (horasSemanais > 40)
+//         {
+//             double horasExtras = horasSemanais - 40;
+//             double valorExtra = valorHora * 1.5;
+
+//             salario = (40 * valorHora + horasExtras * valorExtra) * 4;
+//         }
+//         else
+//         {
+//             salario = horas * valorHora;
+//         }
+
+//         Console.WriteLine($"Salário total: R$ {salario:F2}");
+// ===============================================
+//  Exercício 06 — Reajuste de preços
+// ------------------------------------------------
+// Console.Write("Digite a venda média mensal do produto: ");
+// int vendaMedia = int.Parse(Console.ReadLine());
+
+// Console.Write("Digite o preço atual do produto: ");
+//         double preco = double.Parse(Console.ReadLine());
+
+//         double novoPreco = preco;
+
+//         if (vendaMedia < 500 && preco < 30)
+//         {
+//             novoPreco = preco * 1.10; // aumento de 10%
+//         }
+//         else if (vendaMedia >= 500 && preco >= 30)
+//         {
+//             novoPreco = preco * 0.80; // redução de 20%
+//         }
+
+//         Console.WriteLine($"Preço reajustado: R$ {novoPreco:F2}")
