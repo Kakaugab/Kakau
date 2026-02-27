@@ -1,0 +1,183 @@
+
+
+1- 
+using System; 
+
+  class program 
+{
+
+int x1, y1, x2, y2;
+int d;
+  {
+Console Write("Digite x1");
+x1 = (int) double. Parse(ConsoleReadLine() ; 
+      {
+Console. Write("Digite y1");
+y1 = (int)double.Parse(Console Readine());
+            {
+Console. Write("Digite x2");
+x2= (int)double.Parse(Conso.e.ReadLine()):
+      {
+Console. Write("Digite y2");
+y2 = int)double.Parse(ConsoleReadLineC2); 
+      {
+
+d = Math.Sqrt(Math. Pow(x2 - x1), 2) + Math.PowC(y2 - y1), 2));
+            { 
+Console. Write("Resultado:" + d); 
+       } 
+   } 
+}
+
+2- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Digite o valor de A:");
+        if (!int.TryParse(Console.ReadLine(), out int A) || A <= 0)
+        {
+            Console.WriteLine("Valor inválido para A.");
+            return;
+        }
+
+        Console.WriteLine("Digite o valor de B:");
+        if (!int.TryParse(Console.ReadLine(), out int B) || B <= 0)
+        {
+            Console.WriteLine("Valor inválido para B.");
+            return;
+        }
+
+        Console.WriteLine("Digite o valor de C:");
+        if (!int.TryParse(Console.ReadLine(), out int C) || C <= 0)
+        {
+            Console.WriteLine("Valor inválido para C.");
+            return;
+        }
+
+        double R = Math.Pow(A + B, 2);
+        double S = Math.Pow(B + C, 2);
+        double D = (R + S) / 2;
+
+        Console.WriteLine($"O valor de R é: {R}");
+        Console.WriteLine($"O valor de S é: {S}");
+        Console.WriteLine($"O valor de D é: {D}");
+    }
+}
+
+
+3-
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        double nota1, nota2, nota3;
+        int peso1 = 2, peso2 = 3, peso3 = 5;
+
+        Console.WriteLine("Digite a primeira nota:");
+        if (!double.TryParse(Console.ReadLine(), out nota1))
+        {
+            Console.WriteLine("Nota inválida.");
+            return;
+        }
+
+        Console.WriteLine("Digite a segunda nota:");
+        if (!double.TryParse(Console.ReadLine(), out nota2))
+        {
+            Console.WriteLine("Nota inválida.");
+            return;
+        }
+
+        Console.WriteLine("Digite a terceira nota:");
+        if (!double.TryParse(Console.ReadLine(), out nota3))
+        {
+            Console.WriteLine("Nota inválida.");
+            return;
+        }
+
+        double mediaFinal = ((nota1 * peso1) + (nota2 * peso2) + (nota3 * peso3)) / (peso1 + peso2 + peso3);
+
+        Console.WriteLine("A média final do aluno é: {mediaFinal:F2}");
+    }
+}
+
+4- 
+
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Digite um número inteiro:");
+        if (int.TryParse(Console.ReadLine(), out int numero))
+        {
+            Console.WriteLine("Número inválido.");
+            return;
+        }
+
+        if (numero % 2 == 0)
+        {
+            Console.WriteLine($"O número {numero} é par.");
+        }
+        else
+        {
+            Console.WriteLine($"O número {numero} é ímpar.");
+        }
+    }
+}
+
+5- 
+
+using System;
+
+class Program
+{
+    static void Main() 
+
+int a 
+int b 
+int c 
+    {
+        Console.WriteLine("Digite o valor de A:");
+        Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Digite o valor de B:");
+        Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Digite o valor de C:");
+        Convert.ToInt32(Console.ReadLine());
+
+        int maior = a;
+        if (b > maior)
+        {
+            maior = b;
+        }
+        if (c > maior)
+        {
+            maior = c;
+        }
+
+        Console.WriteLine($"O maior valor é: {maior}");
+
+        // Continuação para a segunda parte do problema
+        VerificarSomaParImpar(a, b, c);
+    }
+
+    static void VerificarSomaParImpar(int a, int b, int c)
+    {
+        int soma = a + b + c;
+        if (soma % 2 = 0)
+        {
+            Console.WriteLine($"A soma de A+B+C ({soma}) é um número par.");
+        }
+        else
+        {
+            Console.WriteLine($"A soma de A+B+C ({soma}) é um número ímpar.");
+        }
+    }
+}
