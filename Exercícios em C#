@@ -1,0 +1,675 @@
+1-
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int X = int.Parse(Console.ReadLine());
+
+        for (int i = 1; i <= X; i += 2)
+        {
+            Console.WriteLine(i);
+        }
+    }
+}
+2- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int x = int.Parse(Console.ReadLine());
+        int y = int.Parse(Console.ReadLine());
+
+        int menor = Math.Min(x, y);
+        int maior = Math.Max(x, y);
+
+        int soma = 0;
+
+        for (int i = menor + 1; i < maior; i++)
+        {
+            if (i % 2 != 0)
+                soma += i;
+        }
+
+        Console.WriteLine(soma);
+    }
+}
+3- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int N = int.Parse(Console.ReadLine());
+        int dentro = 0, fora = 0;
+
+        for (int i = 0; i < N; i++)
+        {
+            int x = int.Parse(Console.ReadLine());
+
+            if (x >= 10 && x <= 20)
+                dentro++;
+            else
+                fora++;
+        }
+
+        Console.WriteLine($"{dentro} in");
+        Console.WriteLine($"{fora} out");
+    }
+}
+4- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int N = int.Parse(Console.ReadLine());
+
+        for (int i = 2; i <= N; i += 2)
+        {
+            Console.WriteLine($"{i}^2 = {i * i}");
+        }
+    }
+}
+5- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int N = int.Parse(Console.ReadLine());
+
+        for (int i = 0; i < N; i++)
+        {
+            int x = int.Parse(Console.ReadLine());
+
+            if (x == 0)
+                Console.WriteLine("NULL");
+            else if (x % 2 == 0)
+                Console.WriteLine(x > 0 ? "EVEN POSITIVE" : "EVEN NEGATIVE");
+            else
+                Console.WriteLine(x > 0 ? "ODD POSITIVE" : "ODD NEGATIVE");
+        }
+    }
+}
+6- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int N = int.Parse(Console.ReadLine());
+
+        for (int i = 1; i < 10000; i++)
+        {
+            if (i % N == 2)
+                Console.WriteLine(i);
+        }
+    }
+}
+7- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int N = int.Parse(Console.ReadLine());
+
+        for (int i = 0; i < N; i++)
+        {
+            string[] valores = Console.ReadLine().Split(' ');
+            double a = double.Parse(valores[0]);
+            double b = double.Parse(valores[1]);
+            double c = double.Parse(valores[2]);
+
+            double media = (a * 2 + b * 3 + c * 5) / 10;
+
+            Console.WriteLine(media.ToString("F1"));
+        }
+    }
+}
+8- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int maior = int.MinValue;
+        int posicao = 0;
+
+        for (int i = 1; i <= 100; i++)
+        {
+            int x = int.Parse(Console.ReadLine());
+
+            if (x > maior)
+            {
+                maior = x;
+                posicao = i;
+            }
+        }
+
+        Console.WriteLine(maior);
+        Console.WriteLine(posicao);
+    }
+}
+9- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int N = int.Parse(Console.ReadLine());
+
+        int total = 0, coelhos = 0, ratos = 0, sapos = 0;
+
+        for (int i = 0; i < N; i++)
+        {
+            string[] entrada = Console.ReadLine().Split(' ');
+            int qtd = int.Parse(entrada[0]);
+            char tipo = entrada[1][0];
+
+            total += qtd;
+
+            if (tipo == 'C') coelhos += qtd;
+            else if (tipo == 'R') ratos += qtd;
+            else if (tipo == 'S') sapos += qtd;
+        }
+
+        Console.WriteLine($"Total: {total} cobaias");
+        Console.WriteLine($"Total de coelhos: {coelhos}");
+        Console.WriteLine($"Total de ratos: {ratos}");
+        Console.WriteLine($"Total de sapos: {sapos}");
+        Console.WriteLine($"Percentual de coelhos: {(coelhos * 100.0 / total):F2} %");
+        Console.WriteLine($"Percentual de ratos: {(ratos * 100.0 / total):F2} %");
+        Console.WriteLine($"Percentual de sapos: {(sapos * 100.0 / total):F2} %");
+    }
+}
+10- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        for (int i = 1; i <= 9; i += 2)
+        {
+            for (int j = 7; j >= 5; j--)
+            {
+                Console.WriteLine($"I={i} J={j}");
+            }
+        }
+    }
+}
+11- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int j = 7;
+
+        for (int i = 1; i <= 9; i += 2)
+        {
+            for (int k = 0; k < 3; k++)
+            {
+                Console.WriteLine($"I={i} J={j - k}");
+            }
+            j += 2;
+        }
+    }
+}
+12- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int N = int.Parse(Console.ReadLine());
+
+        for (int i = 0; i < N; i++)
+        {
+            string[] v = Console.ReadLine().Split(' ');
+            double x = double.Parse(v[0]);
+            double y = double.Parse(v[1]);
+
+            if (y == 0)
+                Console.WriteLine("divisao impossivel");
+            else
+                Console.WriteLine((x / y).ToString("F1"));
+        }
+    }
+}
+13- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int x = int.Parse(Console.ReadLine());
+        int y = int.Parse(Console.ReadLine());
+
+        int menor = Math.Min(x, y);
+        int maior = Math.Max(x, y);
+
+        int soma = 0;
+
+        for (int i = menor; i <= maior; i++)
+        {
+            if (i % 13 != 0)
+                soma += i;
+        }
+
+        Console.WriteLine(soma);
+    }
+}
+14- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int x = int.Parse(Console.ReadLine());
+        int y = int.Parse(Console.ReadLine());
+
+        int menor = Math.Min(x, y);
+        int maior = Math.Max(x, y);
+
+        for (int i = menor + 1; i < maior; i++)
+        {
+            if (i % 5 == 2 || i % 5 == 3)
+                Console.WriteLine(i);
+        }
+    }
+}
+15- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int N = int.Parse(Console.ReadLine());
+        int num = 1;
+
+        for (int i = 0; i < N; i++)
+        {
+            Console.WriteLine($"{num} {num + 1} {num + 2} PUM");
+            num += 4;
+        }
+    }
+}
+16- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int N = int.Parse(Console.ReadLine());
+
+        for (int i = 1; i <= N; i++)
+        {
+            Console.WriteLine($"{i} {i * i} {i * i * i}");
+        }
+    }
+}
+17- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int N = int.Parse(Console.ReadLine());
+
+        for (int i = 1; i <= N; i++)
+        {
+            Console.WriteLine($"{i} {i * i} {i * i * i}");
+            Console.WriteLine($"{i} {i * i + 1} {i * i * i + 1}");
+        }
+    }
+}
+18- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int N = int.Parse(Console.ReadLine());
+
+        int a = 0, b = 1;
+
+        for (int i = 0; i < N; i++)
+        {
+            if (i == N - 1)
+                Console.Write(a);
+            else
+                Console.Write(a + " ");
+
+            int temp = a + b;
+            a = b;
+            b = temp;
+        }
+
+        Console.WriteLine();
+    }
+}
+19- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int N = int.Parse(Console.ReadLine());
+        int fat = 1;
+
+        for (int i = 1; i <= N; i++)
+        {
+            fat *= i;
+        }
+
+        Console.WriteLine(fat);
+    }
+}
+20- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        double S = 0;
+
+        for (int i = 1; i <= 100; i++)
+        {
+            S += 1.0 / i;
+        }
+
+        Console.WriteLine(S.ToString("F2"));
+    }
+}
+21- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        double S = 0;
+        int j = 1;
+
+        for (int i = 1; i <= 39; i += 2)
+        {
+            S += (double)i / j;
+            j *= 2;
+        }
+
+        Console.WriteLine(S.ToString("F2"));
+    }
+} 
+22- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int N = int.Parse(Console.ReadLine());
+
+        for (int i = 1; i <= N; i++)
+        {
+            if (N % i == 0)
+                Console.WriteLine(i);
+        }
+    }
+} 
+23- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int N = int.Parse(Console.ReadLine());
+
+        for (int i = 0; i < N; i++)
+        {
+            string[] v = Console.ReadLine().Split(' ');
+            int x = int.Parse(v[0]);
+            int y = int.Parse(v[1]);
+
+            int menor = Math.Min(x, y);
+            int maior = Math.Max(x, y);
+
+            int soma = 0;
+
+            for (int j = menor + 1; j < maior; j++)
+            {
+                if (j % 2 != 0)
+                    soma += j;
+            }
+
+            Console.WriteLine(soma);
+        }
+    }
+}
+24- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        while (true)
+        {
+            string[] v = Console.ReadLine().Split(' ');
+            int m = int.Parse(v[0]);
+            int n = int.Parse(v[1]);
+
+            if (m <= 0 || n <= 0)
+                break;
+
+            int menor = Math.Min(m, n);
+            int maior = Math.Max(m, n);
+
+            int soma = 0;
+
+            for (int i = menor; i <= maior; i++)
+            {
+                Console.Write(i + " ");
+                soma += i;
+            }
+
+            Console.WriteLine($"Sum={soma}");
+        }
+    }
+} 
+25- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        string[] v = Console.ReadLine().Split(' ');
+        int X = int.Parse(v[0]);
+        int Y = int.Parse(v[1]);
+
+        for (int i = 1; i <= Y; i++)
+        {
+            if (i % X == 0)
+                Console.WriteLine(i);
+            else
+                Console.Write(i + " ");
+        }
+    }
+} 
+26- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        string[] entrada = Console.ReadLine().Split(' ');
+        int A = int.Parse(entrada[0]);
+
+        int N = 0;
+        int i = 1;
+
+        while (true)
+        {
+            N = int.Parse(entrada[i]);
+            if (N > 0) break;
+            i++;
+        }
+
+        int soma = 0;
+
+        for (int j = 0; j < N; j++)
+        {
+            soma += A + j;
+        }
+
+        Console.WriteLine(soma);
+    }
+}
+27- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int X = int.Parse(Console.ReadLine());
+        int Z;
+
+        do
+        {
+            Z = int.Parse(Console.ReadLine());
+        } while (Z <= X);
+
+        int soma = 0, count = 0;
+
+        for (int i = X; soma <= Z; i++)
+        {
+            soma += i;
+            count++;
+        }
+
+        Console.WriteLine(count);
+    }
+}
+28- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int N = int.Parse(Console.ReadLine());
+
+        for (int i = 0; i < N; i++)
+        {
+            string[] v = Console.ReadLine().Split(' ');
+            int x = int.Parse(v[0]);
+            int y = int.Parse(v[1]);
+
+            int soma = 0;
+            int count = 0;
+
+            int num = x;
+
+            while (count < y)
+            {
+                if (num % 2 != 0)
+                {
+                    soma += num;
+                    count++;
+                }
+                num++;
+            }
+
+            Console.WriteLine(soma);
+        }
+    }
+} 
+29- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int T = int.Parse(Console.ReadLine());
+
+        for (int i = 0; i < T; i++)
+        {
+            string[] v = Console.ReadLine().Split(' ');
+            int pa = int.Parse(v[0]);
+            int pb = int.Parse(v[1]);
+            double g1 = double.Parse(v[2]);
+            double g2 = double.Parse(v[3]);
+
+            int anos = 0;
+
+            while (pa <= pb && anos <= 100)
+            {
+                pa += (int)(pa * g1 / 100);
+                pb += (int)(pb * g2 / 100);
+                anos++;
+            }
+
+            if (anos > 100)
+                Console.WriteLine("Mais de 1 seculo.");
+            else
+                Console.WriteLine($"{anos} anos.");
+        }
+    }
+} 
+30- 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int N = int.Parse(Console.ReadLine());
+
+        for (int i = 0; i < N; i++)
+        {
+            int x = int.Parse(Console.ReadLine());
+            bool primo = true;
+
+            if (x <= 1) primo = false;
+
+            for (int j = 2; j * j <= x; j++)
+            {
+                if (x % j == 0)
+                {
+                    primo = false;
+                    break;
+                }
+            }
+
+            Console.WriteLine(primo ? $"{x} eh primo" : $"{x} nao eh primo");
+        }
+    }
+} 
+
