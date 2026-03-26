@@ -1,0 +1,194 @@
+using System;
+
+class Exercício1 
+{
+    static void Main()
+    {
+        int[] vetor = new int[10];
+        int soma = 0;
+
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write($"Digite o {i + 1}º número: ");
+            vetor[i] = int.Parse(Console.ReadLine());
+            soma += vetor[i];
+        }
+
+        Console.WriteLine($"Soma dos valores: {soma}");
+    }
+} 
+
+using System;
+
+class Exercício2 
+{
+    static void Main()
+    {
+        int[] vetor = new int[15];
+
+        for (int i = 0; i < 15; i++)
+        {
+            Console.Write($"Digite o {i + 1}º número: ");
+            vetor[i] = int.Parse(Console.ReadLine());
+        }
+
+        Console.WriteLine("Números positivos:");
+        foreach (int num in vetor)
+        {
+            if (num > 0)
+                Console.WriteLine(num);
+        }
+    }
+} 
+
+using System;
+
+class Exercício3 
+{
+    static void Main()
+    {
+        int[] vetor = new int[8];
+        bool encontrado = false;
+
+        for (int i = 0; i < 8; i++)
+        {
+            Console.Write($"Digite o {i + 1}º número: ");
+            vetor[i] = int.Parse(Console.ReadLine());
+        }
+
+        Console.Write("Digite um número para buscar: ");
+        int busca = int.Parse(Console.ReadLine());
+
+        for (int i = 0; i < 8; i++)
+        {
+            if (vetor[i] == busca)
+            {
+                Console.WriteLine($"Número encontrado na posição {i}");
+                encontrado = true;
+            }
+        }
+
+        if (!encontrado)
+            Console.WriteLine("O número não se encontra no vetor.");
+    }
+} 
+
+using System;
+
+class Exercício4 
+{
+    static void Main()
+    {
+        int[] v1 = new int[10];
+        int[] v2 = new int[10];
+        int[] v3 = new int[10];
+
+        Console.WriteLine("Vetor 1:");
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write($"Digite o {i + 1}º número: ");
+            v1[i] = int.Parse(Console.ReadLine());
+        }
+
+        Console.WriteLine("Vetor 2:");
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write($"Digite o {i + 1}º número: ");
+            v2[i] = int.Parse(Console.ReadLine());
+        }
+
+        for (int i = 0; i < 10; i++)
+        {
+            v3[i] = v1[i] + v2[i];
+        }
+
+        Console.WriteLine("Vetor resultante:");
+        foreach (int num in v3)
+        {
+            Console.WriteLine(num);
+        }
+    }
+} 
+
+using System;
+
+class Exercício5 
+{
+    static void Main()
+    {
+        int[] vetor = new int[20];
+        int pares = 0, impares = 0, maiores50 = 0, menores7 = 0;
+
+        for (int i = 0; i < 20; i++)
+        {
+            Console.Write($"Digite o {i + 1}º número: ");
+            vetor[i] = int.Parse(Console.ReadLine());
+
+            if (vetor[i] % 2 == 0) pares++;
+            else impares++;
+
+            if (vetor[i] > 50) maiores50++;
+            if (vetor[i] < 7) menores7++;
+        }
+
+        Console.WriteLine($"Pares: {pares}");
+        Console.WriteLine($"Ímpares: {impares}");
+        Console.WriteLine($"> 50: {maiores50}");
+        Console.WriteLine($"< 7: {menores7}");
+    }
+}
+
+using System;
+
+class Exercício6 
+{
+    static void Main()
+    {
+        double[] salarios = new double[10];
+
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write($"Digite o salário do funcionário {i + 1}: ");
+            salarios[i] = double.Parse(Console.ReadLine());
+        }
+
+        Console.WriteLine("Salários reajustados:");
+        for (int i = 0; i < 10; i++)
+        {
+            salarios[i] *= 1.05;
+            Console.WriteLine($"Funcionário {i + 1}: {salarios[i]:F2}");
+        }
+    }
+} 
+
+using System;
+
+class Exercício7 
+{
+    static void Main()
+    {
+        int[] vetor = new int[10];
+
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write($"Digite o {i + 1}º número: ");
+            vetor[i] = int.Parse(Console.ReadLine());
+        }
+
+        Console.WriteLine("Vetor original:");
+        foreach (int num in vetor)
+            Console.Write(num + " ");
+
+        // Invertendo o vetor 
+        for (int i = 0; i < vetor.Length / 2; i++)
+        {
+            int temp = vetor[i];
+            vetor[i] = vetor[vetor.Length - 1 - i];
+            vetor[vetor.Length - 1 - i] = temp;
+        }
+
+        Console.WriteLine("\nVetor invertido:");
+        foreach (int num in vetor)
+            Console.Write(num + " ");
+    }
+}
