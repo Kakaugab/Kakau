@@ -1,0 +1,241 @@
+using System;
+
+class Exercicio1 
+{
+    static void Main()
+    {
+        int[] vetor = new int[15];
+
+        for (int i = 0; i < 15; i++)
+        {
+            Console.Write($"Digite o {i + 1}º número: ");
+            vetor[i] = int.Parse(Console.ReadLine());
+        }
+
+        Console.WriteLine("\nValores nas posições pares:");
+        for (int i = 0; i < 15; i += 2)
+        {
+            Console.WriteLine(vetor[i]);
+        }
+    }
+} 
+
+using System;
+
+class Exercicio2
+{
+    static void Main()
+    {
+        string[] nomes = new string[10];
+        double[] precos = new double[10];
+
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write($"Nome do produto {i + 1}: ");
+            nomes[i] = Console.ReadLine();
+
+            Console.Write($"Preço do produto {i + 1}: ");
+            precos[i] = double.Parse(Console.ReadLine());
+        }
+
+        Console.Write("\nDigite um valor para pesquisa: ");
+        double valor = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("\nProdutos com preço igual ao digitado:");
+        for (int i = 0; i < 10; i++)
+        {
+            if (precos[i] == valor)
+            {
+                Console.WriteLine($"{nomes[i]} - R$ {precos[i]}");
+            }
+        }
+    }
+} 
+
+using System;
+
+class Exercicio3
+{
+    static void Main()
+    {
+        int[,] matriz = new int[3, 5];
+
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                Console.Write($"Digite valor [{i},{j}]: ");
+                matriz[i, j] = int.Parse(Console.ReadLine());
+            }
+        }
+
+        Console.WriteLine("\nSoma das linhas:");
+        for (int i = 0; i < 3; i++)
+        {
+            int soma = 0;
+            for (int j = 0; j < 5; j++)
+            {
+                soma += matriz[i, j];
+            }
+            Console.WriteLine($"Linha {i}: {soma}");
+        }
+    }
+} 
+
+
+using System;
+
+class Exercicio4
+{
+    static void Main()
+    {
+        int[,] matriz = new int[5, 5];
+        int valor = 1;
+
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                matriz[i, j] = valor++;
+            }
+        }
+
+        Console.WriteLine("Diagonal principal:");
+        for (int i = 0; i < 5; i++)
+        {
+            Console.WriteLine(matriz[i, i]);
+        }
+
+        Console.WriteLine("\nDiagonal secundária:");
+        for (int i = 0; i < 5; i++)
+        {
+            Console.WriteLine(matriz[i, 4 - i]);
+        }
+    }
+}
+
+using System;
+
+class Exercicio5
+{
+    static void Main()
+    {
+        string[] nomes = new string[10];
+        double[,] notas = new double[10, 3];
+        double[] medias = new double[10];
+
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write($"Nome do aluno {i + 1}: ");
+            nomes[i] = Console.ReadLine();
+
+            double soma = 0;
+            for (int j = 0; j < 3; j++)
+            {
+                Console.Write($"Nota {j + 1}: ");
+                notas[i, j] = double.Parse(Console.ReadLine());
+                soma += notas[i, j];
+            }
+
+            medias[i] = soma / 3;
+        }
+
+        Console.WriteLine("\nRelatório:\n");
+
+        for (int i = 0; i < 10; i++)
+        {
+            if (medias[i] >= 7)
+                Console.ForegroundColor = ConsoleColor.Blue;
+            else
+                Console.ForegroundColor = ConsoleColor.Red;
+
+            Console.WriteLine($"Aluno: {nomes[i]}");
+            Console.WriteLine($"Notas: {notas[i,0]}, {notas[i,1]}, {notas[i,2]}");
+            Console.WriteLine($"Média: {medias[i]:F2}");
+            Console.WriteLine(medias[i] >= 7 ? "Aprovado\n" : "Reprovado\n");
+        }
+
+        Console.ResetColor();
+    }
+} 
+
+using System;
+
+class Exercicio6 
+{
+    static void Main()
+    {
+        char[,] tabuleiro = new char[3, 3];
+        int jogada = 0;
+        bool fim = false;
+
+        while (!fim && jogada < 9)
+        {
+            Console.Clear();
+            Mostrar(tabuleiro);
+
+            char jogador = (jogada % 2 == 0) ? 'X' : 'O';
+
+            Console.WriteLine($"\nJogador {jogador}, informe linha (0-2): ");
+            int linha = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Informe coluna (0-2): ");
+            int coluna = int.Parse(Console.ReadLine());
+
+            if (tabuleiro[linha, coluna] == '\0')
+            {
+                tabuleiro[linha, coluna] = jogador;
+                jogada++;
+
+                if (VerificarVitoria(tabuleiro, jogador))
+                {
+                    Console.Clear();
+                    Mostrar(tabuleiro);
+                    Console.WriteLine($"\nJogador {jogador} venceu!");
+                    fim = true;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Posição já ocupada!");
+                Console.ReadKey();
+            }
+        }
+
+        if (!fim)
+        {
+            Console.Clear();
+            Mostrar(tabuleiro);
+            Console.WriteLine("\nEmpate!");
+        }
+    }
+
+    static void Mostrar(char[,] t)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                Console.Write((t[i, j] == '\0' ? '-' : t[i, j]) + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+
+    static bool VerificarVitoria(char[,] t, char j)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if ((t[i, 0] == j && t[i, 1] == j && t[i, 2] == j) ||
+                (t[0, i] == j && t[1, i] == j && t[2, i] == j))
+                return true;
+        }
+
+        if ((t[0, 0] == j && t[1, 1] == j && t[2, 2] == j) ||
+            (t[0, 2] == j && t[1, 1] == j && t[2, 0] == j))
+            return true;
+
+        return false;
+    }
+} 
+
