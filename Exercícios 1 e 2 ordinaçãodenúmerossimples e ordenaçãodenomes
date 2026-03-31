@@ -1,0 +1,38 @@
+using System;
+class Program
+{
+    static void Main(string[] args)
+    {
+        int[] vet = new int[5];
+        for (int i = 0; i < 5; i++)
+        { 
+            Console.WriteLine("Digite um número: ");
+            vet[i] = int.Parse(Console.ReadLine());
+        }
+        Array.Sort(vet);
+        Console.WriteLine("Números em ordem crescente: ");
+        foreach (int i in vet)
+        {
+            Console.WriteLine(i);
+        }
+    }
+} 
+
+using System;
+class Program
+{
+    static void Main(string[] args)
+    {
+        string[] nomes = new string[3];
+                for (int i = 0; i < nomes.Length; i++)
+        { 
+            nomes[i] = Console.ReadLine();
+        }
+                Array.Sort(nomes);
+                foreach (string nome in nomes)
+        {
+                       Console.WriteLine(nome);
+        }
+    }
+
+}
