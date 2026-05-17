@@ -1,0 +1,205 @@
+1-
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Stack<string> historico = new Stack<string>();
+        Stack<string> avancar = new Stack<string>();
+
+        string paginaAtual = "Página Inicial";
+
+        while (true)
+        {
+            Console.WriteLine("\nPágina atual: " + paginaAtual);
+            Console.WriteLine("1 - Visitar nova URL");
+            Console.WriteLine("2 - Voltar");
+            Console.WriteLine("3 - Avançar");
+            Console.WriteLine("4 - Exibir página atual");
+            Console.WriteLine("0 - Sair");
+
+            Console.Write("Escolha: ");
+            int opcao = int.Parse(Console.ReadLine());
+
+            switch (opcao)
+            {
+                case 1:
+                    Console.Write("Digite a URL: ");
+                    string novaPagina = Console.ReadLine();
+
+                    historico.Push(paginaAtual);
+                    paginaAtual = novaPagina;
+
+                    avancar.Clear();
+
+                    break;
+
+                case 2:
+                    if (historico.Count > 0)
+                    {
+                        avancar.Push(paginaAtual);
+                        paginaAtual = historico.Pop();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Não há páginas anteriores.");
+                    }
+                    break;
+
+                case 3:
+                    if (avancar.Count > 0)
+                    {
+                        historico.Push(paginaAtual);
+                        paginaAtual = avancar.Pop();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Não há páginas para avançar.");
+                    }
+                    break;
+
+                case 4:
+                    Console.WriteLine("Página atual: " + paginaAtual);
+                    break;
+
+                case 0:
+                    return;
+
+                default:
+                    Console.WriteLine("Opção inválida.");
+                    break;
+            }
+        }
+    }
+}
+
+2- 
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Stack<int> pilha = new Stack<int>();
+        Stack<int> auxiliar = new Stack<int>();
+
+        Console.Write("Quantos números deseja inserir? ");
+        int quantidade = int.Parse(Console.ReadLine());
+
+        for (int i = 0; i < quantidade; i++)
+        {
+            Console.Write("Digite um número: ");
+            int numero = int.Parse(Console.ReadLine());
+
+            pilha.Push(numero);
+        }
+
+        while (pilha.Count > 0)
+        {
+            int temp = pilha.Pop();
+
+            while (auxiliar.Count > 0 && auxiliar.Peek() < temp)
+            {
+                pilha.Push(auxiliar.Pop());
+            }
+
+            auxiliar.Push(temp);
+        }
+
+        Console.WriteLine("\nPilha ordenada (menor no topo):");
+
+        while (auxiliar.Count > 0)
+        {
+            Console.WriteLine(auxiliar.Pop());
+        }
+    }
+}
+
+3- 
+using System;
+
+class Program
+{
+    static int Precedencia(string operador)
+    {
+        if (operador == "+" || operador == "-")
+            return 1;
+
+        if (operador == "*" || operador == "/")
+            return 2;
+
+        return 0;
+    }
+
+    static int AplicarOperacao(int a, int b, string operador)
+    {
+        switch (operador)
+        {
+            case "+":
+                return a + b;
+
+            case "-":
+                return a - b;
+
+            case "*":
+                return a * b;
+
+            case "/":
+                return a / b;
+
+            default:
+                return 0;
+        }
+    }
+
+    static void Main()
+    {
+        Stack<int> operandos = new Stack<int>();
+        Stack<string> operadores = new Stack<string>();
+
+        Console.Write("Digite a expressão: ");
+        string expressao = Console.ReadLine();
+
+        string[] tokens = expressao.Split(' ');
+
+        foreach (string token in tokens)
+        {
+            if (int.TryParse(token, out int numero))
+            {
+                operandos.Push(numero);
+            }
+            else
+            {
+                while (operadores.Count > 0 &&
+                       Precedencia(operadores.Peek()) >= Precedencia(token))
+                {
+                    int b = operandos.Pop();
+                    int a = operandos.Pop();
+
+                    string op = operadores.Pop();
+
+                    int resultado = AplicarOperacao(a, b, op);
+
+                    operandos.Push(resultado);
+                }
+
+                operadores.Push(token);
+            }
+        }
+
+        while (operadores.Count > 0)
+        {
+            int b = operandos.Pop();
+            int a = operandos.Pop();
+
+            string op = operadores.Pop();
+
+            int resultado = AplicarOperacao(a, b, op);
+
+            operandos.Push(resultado);
+        }
+
+        Console.WriteLine("Resultado: " + operandos.Pop());
+    }
+}
