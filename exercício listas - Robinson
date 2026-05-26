@@ -1,0 +1,121 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace ControleCinema
+{
+    class Ingresso
+    {
+        public string NomeCliente { get; set; }
+        public string Filme { get; set; }
+        public int NumeroPoltrona { get; set; }
+        public double Valor { get; set; }
+        public bool MeiaEntrada { get; set; }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Ingresso> ingressos = new List<Ingresso>();
+
+            int opcao;
+
+            do
+            {
+                Console.WriteLine("\n===== CONTROLE DE INGRESSOS =====");
+                Console.WriteLine("1 - Cadastrar ingresso");
+                Console.WriteLine("2 - Listar ingressos vendidos");
+                Console.WriteLine("3 - Sair");
+                Console.Write("Escolha uma opção: ");
+
+                int.TryParse(Console.ReadLine(), out opcao);
+
+                switch (opcao)
+                {
+                    case 1:
+                        CadastrarIngresso(ingressos);
+                        break;
+
+                    case 2:
+                        ListarIngressos(ingressos);
+                        break;
+
+                    case 3:
+                        Console.WriteLine("Encerrando o sistema...");
+                        break;
+
+                    default:
+                        Console.WriteLine("Opção inválida!");
+                        break;
+                }
+
+            } while (opcao != 3);
+        }
+
+        static void CadastrarIngresso(List<Ingresso> ingressos)
+        {
+            Console.Write("\nNome do cliente: ");
+            string nome = Console.ReadLine();
+
+            Console.Write("Nome do filme: ");
+            string filme = Console.ReadLine();
+
+            Console.Write("Número da poltrona: ");
+            int poltrona = int.Parse(Console.ReadLine());
+
+            // Verifica se a poltrona já foi vendida para o mesmo filme
+            bool ocupada = ingressos.Any(i =>
+                i.Filme.Equals(filme, StringComparison.OrdinalIgnoreCase) &&
+                i.NumeroPoltrona == poltrona);
+
+            if (ocupada)
+            {
+                Console.WriteLine("Erro: essa poltrona já foi vendida para este filme!");
+                return;
+            }
+
+            Console.Write("Valor do ingresso: ");
+            double valor = double.Parse(Console.ReadLine());
+
+            Console.Write("É meia entrada? (S/N): ");
+            string resposta = Console.ReadLine();
+
+            bool meiaEntrada = resposta.ToUpper() == "S";
+
+            Ingresso novoIngresso = new Ingresso
+            {
+                NomeCliente = nome,
+                Filme = filme,
+                NumeroPoltrona = poltrona,
+                Valor = valor,
+                MeiaEntrada = meiaEntrada
+            };
+
+            ingressos.Add(novoIngresso);
+
+            Console.WriteLine("Ingresso cadastrado com sucesso!");
+        }
+
+        static void ListarIngressos(List<Ingresso> ingressos)
+        {
+            if (ingressos.Count == 0)
+            {
+                Console.WriteLine("\nNenhum ingresso cadastrado.");
+                return;
+            }
+
+            Console.WriteLine("\n===== INGRESSOS VENDIDOS =====");
+
+            foreach (Ingresso ingresso in ingressos)
+            {
+                Console.WriteLine("--------------------------------");
+                Console.WriteLine($"Cliente: {ingresso.NomeCliente}");
+                Console.WriteLine($"Filme: {ingresso.Filme}");
+                Console.WriteLine($"Poltrona: {ingresso.NumeroPoltrona}");
+                Console.WriteLine($"Valor: R$ {ingresso.Valor:F2}");
+                Console.WriteLine($"Tipo: {(ingresso.MeiaEntrada ? "Meia Entrada" : "Inteira")}");
+            }
+        }
+    }
+}
